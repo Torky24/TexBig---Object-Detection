@@ -443,6 +443,7 @@ Table 4. Epochs displays which epoch was selected out of the total amount of epo
 | FasterRCNN - ResNet 50 - V2 - lr=0.05                           | 8/8   | [Notebook Version 28](https://www.kaggle.com/code/islamtorky/final-project-dlcv?scriptVersionId=135529716) |
 | FasterRCNN - ResNet 50 - V2 - lr=0.01 - Random Image Distortion | 5/15  | [Notebook Version 29](https://www.kaggle.com/code/islamtorky/final-project-dlcv?scriptVersionId=135542302) |
 
+Note: Please get in contact with me on islamtorky98@gmail.com to gain access to the notebooks.
 
 </br>
 
