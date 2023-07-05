@@ -212,6 +212,12 @@ The TexBiG dataset, introduced in the paper by Tschirschwitz *et. al.*[1] is des
 
 The TexBiG dataset provides annotations for instance segmentation, including bounding boxes and polygons/masks, for 19 distinct classes. The dataset also provides over 52,000 instances. These annotations have been manually labeled by experts, and to ensure quality, the annotations have been evaluated using Krippendorff's Alpha, a measure of inter-annotator agreement [1]. Each document image in the dataset has been labeled by at least two different annotators.
 
+Data count in the provided datasets:
+
+Train = 44121 Annotations
+Validation = 8251 Annotations
+Test = 600 Images
+
 </br>
 
 Table 2. Different classes within the dataset.
@@ -248,7 +254,6 @@ In figure 2 the bargraph represents the distribution to the different classes.
 ![image](images/class_distribution.png)
 
 Figure 2. Class count of each class within the train and validation dataset.
-
 
 </br>
 
@@ -345,6 +350,8 @@ I only re-used relevant code, and deleted the rest from the referenced folder.
 - `visualizations.py` is where visualizations are created for the inferences.
 - `inference.py` is where an inference function is called to create inferences onto the selected images.
 
+</br>
+
 ### 5.2 Training & Validation
 
 </br>
@@ -437,7 +444,6 @@ Table 4. Epochs displays which epoch was selected out of the total amount of epo
 | FasterRCNN - ResNet 50 - V2 - lr=0.05                           | 8/8   | [Notebook Version 28](https://www.kaggle.com/code/islamtorky/final-project-dlcv?scriptVersionId=135529716) |
 | FasterRCNN - ResNet 50 - V2 - lr=0.01 - Random Image Distortion | 5/7  | [Notebook Version 29](https://www.kaggle.com/code/islamtorky/final-project-dlcv?scriptVersionId=135542302) |
 
-Note: Please get in contact with me on islamtorky98@gmail.com to gain access to the notebooks.
 
 </br>
 
@@ -521,10 +527,4 @@ doi: 10.1109/CVPR.2019.00065
 
 [9] Simard, P. Y., Steinkraus, D., & Platt, J. C. (2003). Best Practices for Convolutional Neural Networks Applied to Visual Document Analysis. In Proceedings of the Seventh International Conference on Document Analysis and Recognition (ICDAR), 958-962. doi: 10.1109/ICDAR.2003.1227801
 
-<<<<<<< Updated upstream
-[10] Simard, P. Y., Steinkraus, D., & Platt, J. C. (2003). Best Practices for Convolutional Neural Networks Applied to Visual Document Analysis. In Proceedings of the Seventh International Conference on Document Analysis and Recognition (ICDAR), 958-962. doi: 10.1109/ICDAR.2003.1227801
-
-[11] A. Krizhevsky, I. Sutskever, and G. E. Hinton, “ImageNet Classification with Deep Convolutional Neural Networks,” in Advances in Neural Information Processing Systems 25, F. Pereira, C. J. C. Burges, L. Bottou, and K. Q. Weinberger, Eds. Curran Associates, Inc., 2012, pp. 1097--1105.
-=======
 [10] A. Krizhevsky, I. Sutskever, and G. E. Hinton, “ImageNet Classification with Deep Convolutional Neural Networks,” in Advances in Neural Information Processing Systems 25, F. Pereira, C. J. C. Burges, L. Bottou, and K. Q. Weinberger, Eds. Curran Associates, Inc., 2012, pp. 1097--1105.
->>>>>>> Stashed changes
