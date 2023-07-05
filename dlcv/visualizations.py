@@ -79,59 +79,103 @@ def plot_image_with_bboxes(
         print(f"Plotted image saved at: {save_path}")
 
 
-def plot_class_distribution(dataset_path: str, save_dir: str = None) -> None:
+import json
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+def plot_label_distribution(train_file: str, val_file: str) -> None:
     """
-    Extract the class distribution from a COCO-formatted dataset and plot it as a bar graph.
+    Plot the label distribution for the train and validation datasets.
 
     Args:
-        dataset_path (str): Path to the COCO dataset file (JSON format).
-        save_dir (str, optional): Path to the directory to save the plotted image. Defaults to None.
+        train_file (str): Path to the train JSON file.
+        val_file (str): Path to the validation JSON file.
 
     Returns:
         None
     """
-    with open(dataset_path, "r") as file:
-        dataset = json.load(file)
+    label_mapping = {
+        1: "paragraph",
+        2: "equation",
+        3: "logo",
+        4: "editorial note",
+        5: "sub-heading",
+        6: "caption",
+        7: "image",
+        8: "footnote",
+        9: "page number",
+        10: "table",
+        11: "heading",
+        12: "author",
+        13: "decoration",
+        14: "footer",
+        15: "header",
+        16: "noise",
+        17: "frame",
+        18: "column title",
+        19: "advertisement",
+    }
 
-    class_distribution = {}
-    for category in dataset["categories"]:
-        class_distribution[category["name"]] = 0
+    def count_labels(dataset: dict) -> dict:
+        """
+        Count the occurrence of each label in the dataset.
 
-    for annotation in dataset["annotations"]:
-        class_id = annotation["category_id"]
-        class_name = next(
-            category["name"]
-            for category in dataset["categories"]
-            if category["id"] == class_id
-        )
-        class_distribution[class_name] += 1
+        Args:
+            dataset (dict): Dataset dictionary containing annotations.
 
-    classes = list(class_distribution.keys())
-    counts = list(class_distribution.values())
+        Returns:
+            dict: Dictionary containing label counts.
+        """
+        label_counts = {}
+        for entry in dataset["annotations"]:
+            label_id = entry["category_id"]
+            label = label_mapping.get(label_id)
+            if label in label_counts:
+                label_counts[label] += 1
+            else:
+                label_counts[label] = 1
+        return label_counts
 
-    plt.figure(figsize=(10, 6))
-    plt.bar(classes, counts)
-    plt.xlabel("Class")
-    plt.ylabel("Count")
-    plt.title("Class Distribution")
-    plt.xticks(rotation=90)
-    plt.tight_layout()
+    with open(train_file, "r") as f:
+        train_data = json.load(f)
 
-    if save_dir:
-        save_path = os.path.join(save_dir, "class_distribution.png")
-        plt.savefig(save_path)
-        print(f"Class distribution plot saved at: {save_path}")
+    with open(val_file, "r") as f:
+        val_data = json.load(f)
+
+    train_label_counts = count_labels(train_data)
+    val_label_counts = count_labels(val_data)
+
+    labels = list(label_mapping.values())
+    train_counts = [train_label_counts.get(label, 0) for label in labels]
+    val_counts = [val_label_counts.get(label, 0) for label in labels]
+
+    width = 0.35
+    x = np.arange(len(labels))
+
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ax.bar(x - width / 2, train_counts, width, label="Train")
+    ax.bar(x + width / 2, val_counts, width, label="Validation")
+
+    ax.set_xlabel("Label")
+    ax.set_ylabel("Count")
+    ax.set_title("Label Distribution - Train vs Val")
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels, rotation=45)
+    ax.legend()
+
+    plt.show()
 
 
 if __name__ == "__main__":
     image_path = "/Users/torky/Documents/final-project-Torky24/images/14688302_1881_Seite_008.png"
-    annotation_file = "/Users/torky/Documents/final-project-Torky24/images/train.json"
+    json_file = "/Users/torky/Downloads/train.json"
+    val_file = "/Users/torky/Downloads/val.json"
 
-    plot_image_with_bboxes(
-        annotation_file,
-        image_path,
-        save_dir="/Users/torky/Documents/final-project-Torky24/images",
-    )
-    plot_class_distribution(
-        annotation_file, save_dir="/Users/torky/Documents/final-project-Torky24/images"
-    )
+    # plot_image_with_bboxes(
+    #    annotation_file,
+    #     image_path,
+    #     save_dir="/Users/torky/Documents/final-project-Torky24/images",
+    # )
+
+    plot_label_distribution(json_file, val_file)

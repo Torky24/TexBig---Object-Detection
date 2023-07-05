@@ -6,8 +6,8 @@ from dlcv.texbigDataset import TexBigDataset
 from dlcv.inference import inference
 
 
-from dlcv.model import ( # noqa
-    load_pretrained_mask_rcnn_resnet50_fpn, # noqa
+from dlcv.model import (  # noqa
+    load_pretrained_mask_rcnn_resnet50_fpn,  # noqa
     load_pretrained_faster_rcnn_resnet50_fpn,
     load_pretrained_faster_rcnn_resnet50_fpn_v2,
 )
@@ -67,9 +67,7 @@ if __name__ == "__main__":
         collate_fn=utils.collate_fn,
     )
 
-    model = load_pretrained_faster_rcnn_resnet50_fpn_v2(
-        num_classes=num_classes
-        )
+    model = load_pretrained_faster_rcnn_resnet50_fpn_v2(num_classes=num_classes)
 
     model.to(device)
 
@@ -80,7 +78,7 @@ if __name__ == "__main__":
     train_model(
         model=model,
         train_data_loader=train_dataloader,
-        validation_dataloader=val_dataloader,
+        validation_data_loader=val_dataloader,
         device=device,
         optimizer=optimizer,
         num_epochs=num_epochs,

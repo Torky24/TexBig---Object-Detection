@@ -136,8 +136,6 @@ def extract_predictions(
     return predictions
 
 
-
-
 def plot_predictions(predictions, images_path, output_path):
     """
     Plots the predictions on the images and saves them to the output path.
