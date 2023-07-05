@@ -17,41 +17,41 @@ This project revolves around developing an efficient object detection model unde
 - [TexBig: Object Detection and Robust Learning](#texbig-object-detection-and-robust-learning)
     - [Introduction](#introduction)
     - [Table Of Contents](#table-of-contents)
-    - [Problem Statement](#problem-statement)
-    - [Proposed Solutions](#proposed-solutions)
-        - [Faster RCNN](#faster-rcnn)
-            - [Objection Localization](#objection-localization)
-            - [Robust Handling of Regions \& Feature Extraction](#robust-handling-of-regions--feature-extraction)
-            - [Transfer Learning](#transfer-learning)
-                - [FASTERRCNN\_RESNET50\_FPN](#fasterrcnn_resnet50_fpn)
-                - [FASTERRCNN\_RESNET50\_FPN\_V2](#fasterrcnn_resnet50_fpn_v2)
-        - [Hyperparameters](#hyperparameters)
-            - [Optimiser](#optimiser)
-                - [Learning Rate](#learning-rate)
-                    - [Learning Rate Selection](#learning-rate-selection)
-                    - [Learning Rate Scheduler](#learning-rate-scheduler)
-                    - [Weight Decay \& Momentum](#weight-decay--momentum)
-            - [Image Augmentation](#image-augmentation)
-            - [Batch Size](#batch-size)
-    - [Dataset Description](#dataset-description)
-    - [Installation](#installation)
-    - [Usage](#usage)
-        - [Folder Structure](#folder-structure)
-        - [Training \& Validation](#training--validation)
-        - [Inferences](#inferences)
-    - [Experimental Results](#experimental-results)
-        - [Results](#results)
-        - [Notebooks \& Epoch Selection](#notebooks--epoch-selection)
-    - [Discussion / Analysis](#discussion--analysis)
-        - [Results Discussion](#results-discussion)
-        - [Inference Analysis](#inference-analysis)
-    - [Outlook / Future Work](#outlook--future-work)
-    - [References](#references)
+    - [1. Problem Statement](#1-problem-statement)
+    - [2. Proposed Solutions](#2-proposed-solutions)
+        - [2.1 Faster RCNN](#21-faster-rcnn)
+            - [2.1.1 Objection Localization](#211-objection-localization)
+            - [2.1.2 Robust Handling of Regions \& Feature Extraction](#212-robust-handling-of-regions--feature-extraction)
+            - [2.1.3 Transfer Learning](#213-transfer-learning)
+                - [2.1.3.1 FASTERRCNN\_RESNET50\_FPN](#2131-fasterrcnn_resnet50_fpn)
+                - [2.1.3.2 FASTERRCNN\_RESNET50\_FPN\_V2](#2132-fasterrcnn_resnet50_fpn_v2)
+        - [2.1.4 Hyperparameters](#214-hyperparameters)
+            - [2.1.4.1 Optimiser](#2141-optimiser)
+                - [2.1.4.1.1 Learning Rate](#21411-learning-rate)
+                    - [2.1.4.1.1.1 Learning Rate Selection](#214111-learning-rate-selection)
+                    - [2.1.4.1.1.2 Learning Rate Scheduler](#214112-learning-rate-scheduler)
+                    - [2.1.4.1.1.3 Weight Decay \& Momentum](#214113-weight-decay--momentum)
+            - [2.1.4.2 Image Augmentation](#2142-image-augmentation)
+            - [2.1.4.3 Batch Size](#2143-batch-size)
+    - [3. Dataset Description](#3-dataset-description)
+    - [4. Installation](#4-installation)
+    - [5. Usage](#5-usage)
+        - [5.1 Folder Structure](#51-folder-structure)
+        - [5.2 Training \& Validation](#52-training--validation)
+        - [5.3 Inferences](#53-inferences)
+    - [6. Experimental Results](#6-experimental-results)
+        - [6.1 Results](#61-results)
+        - [6.2 Notebooks \& Epoch Selection](#62-notebooks--epoch-selection)
+    - [7. Discussion / Analysis](#7-discussion--analysis)
+        - [7.1 Results Discussion](#71-results-discussion)
+        - [7.2 Inference Analysis](#72-inference-analysis)
+    - [8. Outlook / Future Work](#8-outlook--future-work)
+    - [9. References](#9-references)
 
 
 </br>
 
-## Problem Statement
+## 1. Problem Statement
 
 </br>
 
@@ -65,15 +65,15 @@ Overall, this project aims to leverage machine learning techniques to address th
 
 </br>
 
-## Proposed Solutions
+## 2. Proposed Solutions
 
 </br>
 
-### Faster RCNN
+### 2.1 Faster RCNN
 
 </br>
 
-There are a couple of points that Faster RCNN [2] might be promising for the task at hand such as:
+Faster R-CNN is a highly effective object detection model due to its excellent balance between accuracy and speed. By introducing the Region Proposal Network (RPN), it eliminates the need for computationally expensive methods like sliding windows, resulting in faster inference times. Additionally, the model's two-stage architecture allows for improved localization accuracy, making it a reliable choice for tasks requiring precise object detection. There are a couple of points that Faster RCNN [2] might be promising for the task at hand such as:
 
 ![Faster RCNN Model Architecture](images/FasterRCNNModelArchitecture.png)
 
@@ -81,7 +81,7 @@ Figure 1. Architecture of an R-CNN model, visualizing the pipeline [2]
 
 </br>
 
-#### Objection Localization
+#### 2.1.1 Objection Localization
 
 </br>
 
@@ -89,7 +89,7 @@ Figure 1. Architecture of an R-CNN model, visualizing the pipeline [2]
 
 </br>
 
-#### Robust Handling of Regions & Feature Extraction
+#### 2.1.2 Robust Handling of Regions & Feature Extraction
 
 </br>
 
@@ -97,7 +97,7 @@ Figure 1. Architecture of an R-CNN model, visualizing the pipeline [2]
 
 </br>
 
-#### Transfer Learning
+#### 2.1.3 Transfer Learning
 
 </br>
 
@@ -105,7 +105,7 @@ Figure 1. Architecture of an R-CNN model, visualizing the pipeline [2]
  
  </br>
 
-##### FASTERRCNN_RESNET50_FPN
+##### 2.1.3.1 FASTERRCNN_RESNET50_FPN
  
  </br>
 
@@ -117,7 +117,7 @@ Figure 1. Architecture of an R-CNN model, visualizing the pipeline [2]
  
  </br>
 
-##### FASTERRCNN_RESNET50_FPN_V2
+##### 2.1.3.2 FASTERRCNN_RESNET50_FPN_V2
 
 </br>
 
@@ -137,7 +137,7 @@ Figure 1. Architecture of an R-CNN model, visualizing the pipeline [2]
 
  </br>
 
-### Hyperparameters
+### 2.1.4 Hyperparameters
 
 </br>
 
@@ -145,7 +145,7 @@ For all the iterations and different trials the hyper parameters were fixed. For
 
 </br>
 
-#### Optimiser
+#### 2.1.4.1 Optimiser
 
 </br>
 
@@ -153,11 +153,11 @@ SGD is well-suited for Faster R-CNN due to its simplicity and effectiveness in o
 
 </br>
 
-##### Learning Rate
+##### 2.1.4.1.1 Learning Rate
 
 </br>
 
-###### Learning Rate Selection
+###### 2.1.4.1.1.1 Learning Rate Selection
 
 </br>
 
@@ -165,7 +165,7 @@ The selection of learning rates in Faster R-CNN is crucial for achieving optimal
 
 </br>
 
-###### Learning Rate Scheduler
+###### 2.1.4.1.1.2 Learning Rate Scheduler
 
 </br>
 
@@ -175,7 +175,7 @@ This learning rate scheduler is builtin within the engine file and is already ru
 
 </br>
 
-###### Weight Decay & Momentum
+###### 2.1.4.1.1.3 Weight Decay & Momentum
 
 </br>
 
@@ -185,7 +185,7 @@ A momentum value of 0.9 was chosen, which is a commonly used value in many deep 
 
 </br>
 
-#### Image Augmentation
+#### 2.1.4.2 Image Augmentation
 
 </br>
 
@@ -197,6 +197,8 @@ This technique is available within the detection folder with the built in transf
 
 The p value represents the probability of applying the random image distortion to each image. A value of 0.5 indicates that there is an equal chance for the distortion to be applied or not, resulting in a random selection for each image.
 
+Table. 1 Random Image Distortions values that were used.
+
 | Distortion | Range          |
 |------------|----------------|
 | Contrast   | (0.5, 1.5)     |
@@ -205,11 +207,10 @@ The p value represents the probability of applying the random image distortion t
 | Brightness | (0.875, 1.125) |
 | p          | 0.5            |
 
-Table. 3 Random Image Distortions values that were used.
 
 </br>
 
-#### Batch Size
+#### 2.1.4.3 Batch Size
 
 </br>
 
@@ -217,7 +218,7 @@ Due to limitations in the Kaggle notebook environment, a batch size of 2 was cho
 
 </br>
 
-## Dataset Description
+## 3. Dataset Description
 
 </br>
 
@@ -226,6 +227,8 @@ The TexBiG dataset, introduced in the paper by Tschirschwitz *et. al.*[1] is des
 The TexBiG dataset provides annotations for instance segmentation, including bounding boxes and polygons/masks, for 19 distinct classes. The dataset also provides over 52,000 instances. These annotations have been manually labeled by experts, and to ensure quality, the annotations have been evaluated using Krippendorff's Alpha, a measure of inter-annotator agreement [1]. Each document image in the dataset has been labeled by at least two different annotators.
 
 </br>
+
+Table 2. Different classes within the dataset.
 
 | Class            |
 |------------------|
@@ -249,7 +252,6 @@ The TexBiG dataset provides annotations for instance segmentation, including bou
 | column title     |
 | advertisement    |
 
-Table 1. Different classes within the dataset.
 
 </br>
 
@@ -278,7 +280,7 @@ Figure 4. Image 14688302_1881_Seite_008 with bounding boxes and labels.
 
 </br>
 
-## Installation
+## 4. Installation
 
 </br>
 
@@ -304,7 +306,7 @@ Packages:
 
 </br>
 
-## Usage
+## 5. Usage
 
 </br>
 
@@ -314,7 +316,7 @@ I only re-used relevant code, and deleted the rest from the referenced folder.
 
 </br>
 
-### Folder Structure
+### 5.1 Folder Structure
 
 </br>
 
@@ -349,7 +351,7 @@ I only re-used relevant code, and deleted the rest from the referenced folder.
 
 </br>
 
-### Training & Validation
+### 5.2 Training & Validation
 
 </br>
 
@@ -361,7 +363,7 @@ Even though the pyproject.toml clearly indicates `pycocotools` to be installed s
 
 </br>
 
-### Inferences
+### 5.3 Inferences
 
 </br>
 
@@ -376,11 +378,15 @@ Example:
 
 </br>
 
-## Experimental Results
+## 6. Experimental Results
 
 </br>
 
-### Results
+In this section I will be discussing the numerical results as well as discussing the selection of epochs and displaying the notebooks used.
+
+</br>
+
+### 6.1 Results
 
 </br>
 
@@ -392,6 +398,8 @@ The difference between mAP at IoU thresholds of 0.5 and 0.75 lies in the strictn
 
 </br>
 
+Table. 3 Different models with their respective results measured against mAP at different IoU's.
+
 | Model                                                           | mAP   | mAP IoU = 0.50 | mAP IoU = 0.75 |
 |-----------------------------------------------------------------|-------|----------------|----------------|
 | FasterRCNN - ResNet 50 - lr=0.01                                | 28.08 | 46.76          | 27.84          |
@@ -402,7 +410,6 @@ The difference between mAP at IoU thresholds of 0.5 and 0.75 lies in the strictn
 | FasterRCNN - ResNet 50 - V2 - lr=0.05                           | 28.05 | 45.91          | 27.17          |
 | FasterRCNN - ResNet 50 - V2 - lr=0.01 - Random Image Distortion | 29.87 | 48.50          | 29.29          |
 
-Table. 3 Different models with their respective results measured against mAP at different IoU's.
 
 </br>
 
@@ -422,7 +429,9 @@ Figure. 6 Predictions made with bounding boxes, and labels on the test dataset. 
 
 </br>
 
-### Notebooks & Epoch Selection
+### 6.2 Notebooks & Epoch Selection
+
+Table 4. Epochs displays which epoch was selected out of the total amount of epochs. The Notebook versions are hyperlinked directly to the notebook.
 
 | Model                                                           | Epoch | Notebook Link                                                                                              |
 |-----------------------------------------------------------------|-------|------------------------------------------------------------------------------------------------------------|
@@ -434,47 +443,55 @@ Figure. 6 Predictions made with bounding boxes, and labels on the test dataset. 
 | FasterRCNN - ResNet 50 - V2 - lr=0.05                           | 8/8   | [Notebook Version 28](https://www.kaggle.com/code/islamtorky/final-project-dlcv?scriptVersionId=135529716) |
 | FasterRCNN - ResNet 50 - V2 - lr=0.01 - Random Image Distortion | 5/15  | [Notebook Version 29](https://www.kaggle.com/code/islamtorky/final-project-dlcv?scriptVersionId=135542302) |
 
-Table 3. Epochs displays which epoch was selected out of the total amount of epochs. The Notebook versions are hyperlinked directly to the notebook.
 
 </br>
 
 Due to time constraints and the limitation of not exceeding 9 hours of training, the last model variant took longer to run than anticipated. Considering the available time, it was necessary to make a decision to select a specific epoch that would fall within the allowed limit. In this case, the 5th epoch was chosen for the final model as it provided satisfactory results without exceeding the time limit.
 
-The selection of epochs for the FasterRCNN models in the table is based on a project limitation of not exceeding 9 hours of training. Due to this constraint, it was necessary to choose a subset of epochs that yielded satisfactory results within the given time frame. It's worth noting that in some cases, selecting a lower number of epochs resulted in better performance. To determine the appropriate number of epochs for the models, different configurations were tested extensively on a local machine. These tests helped in evaluating the performance of various epoch settings and identifying epochs that showed promising results. Based on the findings from the local testing, the selected epochs were chosen for the subsequent experiments conducted on Kaggle.
+The selection of epochs for the FasterRCNN models in Table 4 is based on a project limitation of not exceeding 9 hours of training. Due to this constraint, it was necessary to choose a subset of epochs that yielded satisfactory results within the given time frame. It's worth noting that in some cases, selecting a lower number of epochs resulted in better performance. To determine the appropriate number of epochs for the models, different configurations were tested extensively on a local machine. These tests helped in evaluating the performance of various epoch settings and identifying epochs that showed promising results. Based on the findings from the local testing, the selected epochs were chosen for the subsequent experiments conducted on Kaggle.
 
 </br>
 
-## Discussion / Analysis
+## 7. Discussion / Analysis
 
 </br>
 
-### Results Discussion
+### 7.1 Results Discussion
 
 </br>
 
-Table 3 shows the Mean Average Precision (mAP) scores for different variants of the Faster R-CNN object detection model using ResNet-50 as a backbone; however, changing the RPN weights. The metrics mAP IoU = 0.50 and mAP IoU = 0.75 represent the mAP scores at IoU (Intersection over Union) thresholds of 0.50 and 0.75, respectively.
+![image](images/loss_results.png)
 
-As the learning rate increases from 0.01 to 0.05, there is a decrease in mAP scores for all metrics. This suggests that a higher learning rate adversely affects the model's performance in terms of object detection accuracy. It's important to note that the optimal learning rate depends on the dataset and specific training setup. These results indicate that smaller learning rates (0.01 and 0.02) perform better for Faster RCNN ResNet-50.
+Figure. 7 Total loss over different epochs. Limited to a number of 6 epochs.
 
-Overall, the Faster RCNN ResNet-50 V2 backbone outperforms the original Faster RCNN ResNet-50 backbone across all variants and metrics, except for the mAP IoU = 0.75 score of the 0.02 learning rate variant. Faster RCNN ResNet-50 V2 consistently achieves higher mAP scores, indicating improved object detection performance when pretrained with ViT and then fine-tuned with ResNet-50. The highest mAP score is observed in the "FasterRCNN - ResNet 50 - V2 - lr=0.01 - Random Image Distortion" variant, suggesting that combining Faster RCNN ResNet-50 V2 with data augmentation techniques (e.g., Random Image Distortion) can further improve the model's performance.
 
-The mAP scores at IoU = 0.75 are consistently lower than those at IoU = 0.50 for all variants. This is expected because a higher IoU threshold requires a more precise object localization, leading to stricter evaluation criteria. The mAP IoU = 0.50 scores provide a more lenient evaluation and generally yield higher results than the mAP IoU = 0.75 scores.
+These results were obtained by evaluating the different variants of the Faster R-CNN object detection model with different RPN's while using ResNet-50 as a backbone on a test dataset. The test dataset is a separate set of images that were not used during the training process and serves as an unbiased evaluation of the model's performance.
+
+The observed loss fluctuations during the training of Faster R-CNN v2 offer valuable insights into the model's training dynamics. Despite the presence of fluctuations, the overall decreasing trend of the loss signifies the model's capacity to learn and make progress.
+
+To obtain a comprehensive understanding of the model's performance, it is essential to monitor additional metrics such as validation accuracy or mean Average Precision (mAP) in conjunction with the loss. Furthermore, conducting further analysis across multiple experiments or training runs can yield more robust and generalizable conclusions.
+
+The mAP (mAP) scores are commonly used to measure the accuracy of object detection models. The mAP scores at different Intersection over Union (IoU) thresholds, specifically IoU = 0.50 and IoU = 0.75, were computed. The results indicate that as the learning rate increases from 0.01 to 0.05, there is a consistent decrease in mAP scores for all metrics. This suggests that a higher learning rate adversely affects the model's performance in terms of object detection accuracy. It's important to note that the optimal learning rate can vary depending on the dataset and specific training setup. In this case, smaller learning rates (0.01 and 0.02) perform better for the Faster RCNN ResNet-50 model.
+
+Furthermore, the Faster RCNN ResNet-50 V2 variant consistently outperforms the original Faster RCNN ResNet-50 variant across all metrics and variants, except for the mAP IoU = 0.75 score of the 0.02 learning rate variant. This indicates that the updated version of the model, which involves pretraining with ViT (Vision Transformer) and then fine-tuning with ResNet-50, generally leads to improved object detection performance.
+
+Additionally, the results suggest that incorporating data augmentation techniques, such as Random Image Distortion, can further enhance the model's performance. The variant "FasterRCNN - ResNet 50 - V2 - lr=0.01 - Random Image Distortion" achieved the highest mAP score, indicating that combining Faster RCNN ResNet-50 V2 with this specific data augmentation technique yielded superior results.
+
+Lastly, it is worth noting that the mAP scores at IoU = 0.75 are consistently lower than those at IoU = 0.50 for all variants. This is expected since a higher IoU threshold requires stricter object localization, making it more challenging for a bounding box prediction to meet the criteria. Therefore, the mAP scores at IoU = 0.50 provide a more lenient evaluation and generally yield higher results compared to the stricter IoU = 0.75 evaluation.
+
+
+
+### 7.2 Inference Analysis
 
 </br>
 
-### Inference Analysis
+It is notable that in some image that are completely empty, the model predicts a bounding box as seen in Figure 5. This suggests that the model falsely detects an object in an image where none exists. This could be due to various reasons, such as noise in the input data, model limitations, or misinterpretation of the features by the model. It is essential to investigate the cause of such false positives to improve the model's accuracy.
+
+The model correctly identifies multiple bounding boxes, including the paragraph with a high accuracy of 1.0 as seen in Figure 6. However, it splits the bounding boxes for the paragraphs that are stacked above each other instead of predicting a single large bounding box encompassing all of them. This could be due to the model's limitations in detecting and grouping objects that are close together or have overlapping regions.
 
 </br>
 
-Figure 5 and Figure 6 present examples of predictions made by the object detection model on test data. However, there are some observations regarding the accuracy of the predictions and the nature of the bounding boxes. 
-
-In Figure 5, it is notable that the image is completely empty, yet the model predicts a bounding box with an accuracy of 0.39. This suggests that the model falsely detects an object in an image where none exists. This could be due to various reasons, such as noise in the input data, model limitations, or misinterpretation of the features by the model. It is essential to investigate the cause of such false positives to improve the model's accuracy.
-
- In Figure 6, the model correctly identifies multiple bounding boxes, including the paragraph with a high accuracy of 1.0. However, it splits the bounding boxes for the paragraphs that are stacked above each other instead of predicting a single large bounding box encompassing all of them. This could be due to the model's limitations in detecting and grouping objects that are close together or have overlapping regions.
-
-</br>
-
-## Outlook / Future Work
+## 8. Outlook / Future Work
 
 </br>
 
@@ -488,7 +505,7 @@ The training and testing time constraints specified in the requirements may pose
 
 </br>
 
-## References
+## 9. References
 
 </br>
 
